@@ -1,11 +1,20 @@
 <!DOCTYPE html>
+
 <head>
     <title>Pixel Creator</title>
     <link href="./index.css" rel="stylesheet">
-    <script src="./index.ts" defer></script>
+    <script src="./index.ts" type="module" defer></script>
 </head>
+
 <body>
-    <div id="program-title">title</div>
-    <div id="info-section">info</div>
-    <canvas id="canvas">canvas</canvas>
+    <div id="text">
+        <div id="program-title">title</div>
+        <div id="info-section">info</div>
+        <div id="toolbar">
+            <label for="color-input">Current pen color:</label>
+            <input type="color" id="color-input">
+        </div>
+    </div>
+
+    <div id="pencilCanvas"></canvas>
 </body>

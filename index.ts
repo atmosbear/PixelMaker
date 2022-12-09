@@ -1,32 +1,51 @@
-function Cell(x: number, y: number, element: unknown) {
-    return { x, y, element }
-}
+import { Rectangle, Scene } from "pencil.js"
 
 function createDrawingArea(
     rows: number = userSettings.rows,
     columns: number = userSettings.columns,
-    backgroundColor: string = userSettings.backgroundColor
+    backgroundColor: string | undefined = userSettings.gridBackgroundColor,
+    gridLineColor: string | undefined = userSettings.gridLineColor,
 ) {
-    let canvas = document.getElementById("canvas") as HTMLCanvasElement
-    canvas.style.backgroundColor = backgroundColor
-    let c = canvas.getContext("2d")!
-    c.fillStyle = userSettings.defaultPenColor
-    c.strokeStyle = userSettings.defaultPenColor
-    // c.fillRect(10, 10, 10, 10)
+    let cellWidth = scene.width / rows
+    let cellHeight = scene.height / columns
     for (let i = 0; i < rows; i++) {
-        for (let j = 0; j < rows; j++) {
-            c.lineTo(i*30, j*3)
-            c.moveTo(3, 3)
-            c.stroke()
+        for (let j = 0; j < columns; j++) {
+            let r = new Rectangle([cellWidth * i, cellHeight * j], cellWidth - 1, cellHeight - 1, { fill: backgroundColor })
+            r.on("hover", () => { if (mouseIsDown) { r.options.fill = userSettings.penColor } })
+            r.on("mousedown", () => { if (mouseIsDown) { r.options.fill = userSettings.penColor } })
+            scene.add(r)
         }
     }
 }
-
-let userSettings = {
-    rows: 10,
-    columns: 10,
-    backgroundColor: "darkslategray",
-    defaultPenColor: "orange",
+type settings = {
+    rows: number,
+    columns: number,
+    penColor: string,
+    gridLineColor: string,
+    gridBackgroundColor: string
 }
 
+let mouseIsDown
+window.addEventListener("mousedown", () => { mouseIsDown = true })
+window.addEventListener("mouseup", () => { mouseIsDown = false })
+function loadSettings(locallySavedSettings?: settings): settings {
+    let defaultSettings = {
+        rows: 30,
+        columns: 30,
+        penColor: "blue",
+        gridLineColor: "black",
+        gridBackgroundColor: "darkslategray",
+    }
+    let settings = defaultSettings
+    if (locallySavedSettings !== undefined) {
+        Object.assign(settings, locallySavedSettings)
+    }
+    return settings
+}
+
+let userSettings = loadSettings()
+let colin = document.getElementById("color-input")! //@ts-expect-error value does actually exist here.
+colin.addEventListener("change", (e) => { userSettings.penColor = e.target!.value })
+let scene = new Scene(document.getElementById("pencilCanvas"), { fill: userSettings.gridLineColor })
+scene.startLoop()
 createDrawingArea()

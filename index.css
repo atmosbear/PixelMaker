@@ -1,28 +1,39 @@
 * {
     font-family: "Manjari Thin", "Verdana", sans-serif;
+    font-size: 1.5rem;
+    color: white
 }
 
 body {
-    background-color: rgba(172, 82, 17, 0.678);
+    background-color: rgb(88, 31, 129);
     margin: 0px
 }
 
-canvas {
+#pencilCanvas {
+    width: 35vw;
+    height: 35vw;
     display: block;
     margin: auto;
-    height: 35vw;
-    width: 35vw;
     min-height: 400px;
     min-width: 400px;
-    background-color: black;
+}
+
+input {
+    padding: 2px;
+    border: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: black
 }
 
 #program-title {
-    padding: 30px;
     font-size: 3rem;
     font-weight: 800
 }
 
 #info-section {
-    font-size: 2rem
+}
+
+#text {
+    padding: 30px
 }
