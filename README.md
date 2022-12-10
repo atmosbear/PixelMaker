@@ -1,5 +1,7 @@
 Hi! I'm Nate. Welcome to my pixel creator.
 
+AS OF RIGHT NOW, THIS IS A WORK IN PROGRESS! I will update regularly.
+
 I created this as a way to show some of my JavaScript and TypeScript skills. 
 
 Design Decisions:
