@@ -15,6 +15,9 @@ type Cell = {
     rectangle: Rectangle, x: number, y: number
 }
 
+/**
+ * Gets the cell object within the cells global array from its coordinates.
+ */
 function getCellByCoords(x: number, y: number): Cell | undefined {
     let ret
     cells.forEach((cell) => {
@@ -25,6 +28,9 @@ function getCellByCoords(x: number, y: number): Cell | undefined {
     return ret
 }
 
+/**
+ * Returns a cell's neighbors given a distance - useful for making circles/radii.
+ */
 function findNeighborsByDistanceOf(centerCell: Cell, maxDistance: number): Cell[] {
     let neighbors: Cell[] = []
     cells.forEach((cell) => {
@@ -38,6 +44,9 @@ function findNeighborsByDistanceOf(centerCell: Cell, maxDistance: number): Cell[
 let done = false
 let repeats = 0
 let ret: Cell[] = []
+/**
+ * Finds the neighbors of a cell that are the exact same color. Opportunity for expansion: make it so that it can do the same general range of colors.
+ */
 function findSameColoredNeighborsOf(cell: Cell): Cell[] {
     let x = cell.x
     let y = cell.y
@@ -62,6 +71,10 @@ function findSameColoredNeighborsOf(cell: Cell): Cell[] {
     repeats = 0
     return ret
 }
+
+/**
+ * Gives a PencilJS rectangle element the tool event listeners needed for the user to draw.
+ */
 function giveRectangleEventListener(cell: { rectangle: Rectangle, x: number, y: number }) {
     function toolHandler() {
         let tool = userSettings.currentToolName
@@ -91,6 +104,10 @@ function giveRectangleEventListener(cell: { rectangle: Rectangle, x: number, y: 
         toolHandler()
     })
 }
+
+/**
+ * (Re)creates the drawing area, clearing the user's drawing.
+ */
 function createDrawingArea(
     rows: number | undefined = userSettings.rows,
     columns: number | undefined = userSettings.columns,
@@ -119,14 +136,13 @@ function createDrawingArea(
         }
     }
 }
-
-// function fillTool() {
-//     window.onclick = () => { }
-// }
 el("about-section").onclick = () => {
     let e = el("about-section-2")
     e.style.display === "none" ? e.style.display = "block" : e.style.display = "none"
 }
+/**
+ * The settings that the user has - essentially a Singleton. Includes colors.
+ */
 class Settings {
     constructor(
         public rows: number = 30, // note that it does not output in pixels... Is there a way to change that??
@@ -139,7 +155,9 @@ class Settings {
     ) { }
 }
 
-
+/**
+ * Loads the settings. If there are any saved locally, loads them.
+*/
 function loadSettings(locallySavedSettings?: Settings): Settings {
     let defaultSettings = new Settings()
     let settings = defaultSettings
@@ -148,6 +166,9 @@ function loadSettings(locallySavedSettings?: Settings): Settings {
     }
     return settings
 }
+/**
+ * 
+ */
 function createToolbarEventListeners() {
     // color input element for changing pen color
     let colin = el("color-input") as HTMLInputElement
@@ -188,7 +209,6 @@ function createToolbarEventListeners() {
     toolButton("pen-tool-button", "Pen", "orange")
     toolButton("erase-tool-button", "Erase", "orange")
 
-
     // sliders
     createSlider("row-slider", "row-slider-label", "rows", "Rows", createDrawingArea)
     createSlider("column-slider", "column-slider-label", "columns", "Columns", createDrawingArea)
@@ -212,16 +232,19 @@ function createToolbarEventListeners() {
     }
 
 }
+
+/**
+ * Creates the scene for the project using the already-established HTML div.
+*/
 function createScene() {
     let scene = new Scene(el("pencilCanvas"), { fill: userSettings.gridLineColor })
     return scene
 }
 let userSettings = loadSettings()
-let mouseIsDown
+let mouseIsDown: boolean
 let cells: Cell[] = []
 let scene = createScene()
 createToolbarEventListeners()
 window.addEventListener("mousedown", () => { mouseIsDown = true })
 window.addEventListener("mouseup", () => { mouseIsDown = false })
 scene.startLoop()
-// createDrawingArea()
