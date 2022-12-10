@@ -70,6 +70,7 @@ function giveRectangleEventListener(cell: { rectangle: Rectangle, x: number, y: 
             findSameColoredNeighborsOf(cell).forEach((neighborCell) => {
                 neighborCell.rectangle.options.fill = penCol
             })
+            cell.rectangle.options.fill = penCol
         } else if (tool === "Pen") {
             let neighbors = findNeighborsByDistanceOf(cell, userSettings.penRadius)
             neighbors.forEach((neighbor) => {

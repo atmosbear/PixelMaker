@@ -12,7 +12,6 @@ body {
 #pencilCanvas {
     width: 35vw;
     height: 35vw;
-    display: block;
     margin: auto;
     min-height: 400px;
     min-width: 400px;
@@ -64,4 +63,8 @@ button {
 
 #text {
     padding: 30px
+}
+
+#page {
+    display: flex;
 }

@@ -7,46 +7,45 @@
 </head>
 
 <body>
-    <div id="text">
-        <div id="program-title">Pixel Maker</div>
-        <div id="info-section">Click and/or drag on the canvas to draw!</div>
-        <u id="about-section">About this project...</u>
-        <div id="about-section-2" style="display: none">This project was a blast to build! What seemed like a tiny project was actually a pretty scalable one with so many features that I had the
-            chance to implement.<br><br>The main thing I take away from this project is that modularity/encapsulation is key - the tools, like the fill tool and the pen tool, are different functions -
-            allowing me to edit their properties without disturbing the other functions. I also got a good taste of how to allow users to download things, a core feature of applications!<br><br> It
-            was a great way to learn to use JavaScript efficiently, and I hope you think it's neat! Thank you so much for your time and for checking it out! Don't forget - you can download your
-            drawing!</div>
-        <div id="toolbar">
-            Tools:
-            <div>
-                <button id="fill-tool-button">Fill</button>
-                <button id="pen-tool-button">Pen</button>
-                <button id="erase-tool-button">Erase</button>
-                <button id="clear-screen-button">Clear Screen</button>
+        <div id="text">
+            <div id="program-title">Pixel Maker</div>
+            <div id="info-section">Click and/or drag on the canvas to draw!</div>
+            <u id="about-section">About this project...</u>
+            <div id="about-section-2" style="display: none">This project was a blast to build! What seemed like a tiny project was actually a pretty scalable one with so many features that I had the
+                chance to implement.<br><br>The main thing I take away from this project is that modularity/encapsulation is key - the tools, like the fill tool and the pen tool, are different functions -
+                allowing me to edit their properties without disturbing the other functions. I also got a good taste of how to allow users to download things, a core feature of applications!<br><br> It
+                was a great way to learn to use JavaScript efficiently, and I hope you think it's neat! Thank you so much for your time and for checking it out! Don't forget - you can download your
+                drawing!</div>
+            <div id="toolbar">
+                Tools:
+                <div>
+                    <button id="fill-tool-button">Fill</button>
+                    <button id="pen-tool-button">Pen</button>
+                    <button id="erase-tool-button">Erase</button>
+                    <button id="clear-screen-button">Clear Screen</button>
+                </div>
+                <div style="background-color: white; height: 1px"></div>
+                <!-- <div id="current-tool-button">current tool: Loading...</div> -->
+                <div>
+                    <input type="range" id="pen-radius-slider" min="1" max="15">
+                    <label id="pen-radius-slider-label" for="pen-radius-slider">Radius: N/A</label>
+                </div>
+                <div>
+                    <label for="color-input">Current pen color:</label>
+                    <input type="color" id="color-input">
+                </div>
+                <div style="background-color: white; height: 1px"></div>
+                <div>
+                    <input type="range" id="row-slider" max="60" min="5">
+                    <label id="row-slider-label" for="row-slider">Rows: N/A</label>
+                </div>
+                <div>
+                    <input type="range" id="column-slider" max="60" min="5">
+                    <label id="column-slider-label" for="column-slider">Columns: N/A</label>
+                </div>
+                <div style="background-color: white; height: 1px"></div>
+                <button id="save-button">Download Drawing</button>
             </div>
-            <div style="background-color: white; height: 1px"></div>
-            <!-- <div id="current-tool-button">current tool: Loading...</div> -->
-            <div>
-                <input type="range" id="pen-radius-slider" min="1" max="15">
-                <label id="pen-radius-slider-label" for="pen-radius-slider">Radius: N/A</label>
-            </div>
-            <div>
-                <label for="color-input">Current pen color:</label>
-                <input type="color" id="color-input">
-            </div>
-            <div style="background-color: white; height: 1px"></div>
-            <div>
-                <input type="range" id="row-slider" max="60" min="5">
-                <label id="row-slider-label" for="row-slider">Rows: N/A</label>
-            </div>
-            <div>
-                <input type="range" id="column-slider" max="60" min="5">
-                <label id="column-slider-label" for="column-slider">Columns: N/A</label>
-            </div>
-            <div style="background-color: white; height: 1px"></div>
-            <button id="save-button">Download Drawing</button>
         </div>
-    </div>
-
-    <div id="pencilCanvas"></canvas>
+        <div id="pencilCanvas"></canvas>
 </body>
