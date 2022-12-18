@@ -1,0 +1,22 @@
+{
+    "compileOnSave": true,
+    "files": [
+        "./index.ts"
+    ],
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "outDir": "dist/"
+    },
+    "exclude": [
+        "node_modules",
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "jspm_packages" : true,
+        "./**/node_modules/**" : true
+    }
+}
