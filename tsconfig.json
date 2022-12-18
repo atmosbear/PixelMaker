@@ -4,10 +4,11 @@
         "./index.ts"
     ],
     "compilerOptions": {
-        "target": "ES6",
-        "module": "commonjs",
+        "target": "ES5",
+        "module": "ES2015",
         "sourceMap": true,
         "skipLibCheck": true,
+        "moduleResolution": "node",
         "outDir": "dist/"
     },
     "exclude": [

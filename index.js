@@ -1,6 +1,5 @@
-"use strict";
-exports.__esModule = true;
-var pencil_js_1 = require("pencil.js");
+export const __esModule = true;
+import { Rectangle, Scene } from "pencil.js";
 /**
  * Returns an element - assumes you know what you're calling exists!
  */
@@ -118,7 +117,7 @@ function createDrawingArea(rows, columns, backgroundColor, gridLineColor) {
     var cellHeight = scene.height / columns;
     for (var i = 0; i < rows; i++) {
         for (var j = 0; j < columns; j++) {
-            var r = new pencil_js_1.Rectangle([cellWidth * i, cellHeight * j], cellWidth - 1, cellHeight - 1, { fill: backgroundColor });
+            var r = new Rectangle([cellWidth * i, cellHeight * j], cellWidth - 1, cellHeight - 1, { fill: backgroundColor });
             scene.add(r);
             var cellObj = { rectangle: r, x: i, y: j };
             giveRectangleEventListener(cellObj);
@@ -229,7 +228,7 @@ function createToolbarEventListeners() {
  * Creates the scene for the project using the already-established HTML div.
 */
 function createScene() {
-    var scene = new pencil_js_1.Scene(el("pencilCanvas"), { fill: userSettings.gridLineColor });
+    var scene = new Scene(el("pencilCanvas"), { fill: userSettings.gridLineColor });
     return scene;
 }
 var userSettings = loadSettings();
