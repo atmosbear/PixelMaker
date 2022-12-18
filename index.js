@@ -1,3 +1,4 @@
+"use strict";
 export const __esModule = true;
 import { Rectangle, Scene } from "https://unpkg.com/pencil.js/dist/pencil.esm.js";
 /**
