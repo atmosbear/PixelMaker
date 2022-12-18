@@ -1,5 +1,5 @@
 export const __esModule = true;
-import { Rectangle, Scene } from "pencil.js";
+import { Rectangle, Scene } from "https://unpkg.com/pencil.js/dist/pencil.esm.js";
 /**
  * Returns an element - assumes you know what you're calling exists!
  */
